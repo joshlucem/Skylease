@@ -1,0 +1,18 @@
+Skylease
+Copyright 2026 joshlucem
+
+Skylease is open source. It is licensed under both of the following, which apply
+together:
+
+  1. The Apache License, Version 2.0
+     Full text: LICENSES/Apache-2.0.txt
+
+  2. The Skylease Credit Preservation Addendum, Version 1.1
+     Full text: LICENSES/LicenseRef-Skylease-Credits.txt
+
+You may use, modify, and redistribute Skylease, including commercially. The
+Addendum requires that the credits built into the plugin (author fields,
+file headers, NOTICE, the about command, and the console startup line) stay
+intact, and it asks, without requiring it, that you credit the author publicly.
+
+SPDX-License-Identifier: Apache-2.0 AND LicenseRef-Skylease-Credits

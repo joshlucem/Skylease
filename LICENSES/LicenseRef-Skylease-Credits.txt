@@ -1,0 +1,102 @@
+SKYLEASE CREDIT PRESERVATION ADDENDUM
+Version 1.1
+
+Supplement to the Apache License, Version 2.0
+
+Copyright 2026 joshlucem
+
+This Addendum supplements the Apache License, Version 2.0 (the "Apache
+License"), a copy of which accompanies the Work. The Work is licensed to You
+under the Apache License and under this Addendum, which apply together. Terms
+defined in the Apache License have the same meaning here. If the two conflict,
+this Addendum prevails on the matters it addresses.
+
+The Work is open source: You may use, modify, and redistribute it, including for
+commercial purposes. This Addendum adds one condition, that the credits built
+into the Work stay intact, and one request, that You credit the Author publicly.
+
+1. Definitions
+
+1.1 "Author" means joshlucem and the contributors listed in the NOTICE file.
+
+1.2 "Credit Line" means the text "Skylease by joshlucem" followed by the
+project address stated in the NOTICE file, as written there.
+
+1.3 "Public Distribution" means making the Work or a Derivative Work available
+to anyone other than You, by download, upload to a plugin repository or
+marketplace, sale, or any other means, with or without charge.
+
+1.4 "Built-in Credits" means the parts of the Work that name the Author, namely:
+(a) the author and website fields of the plugin metadata; (b) the credits shown
+by the Work's about command; (c) the line that identifies the Work and the
+Author in the server console at startup; and (d) the NOTICE file and the
+copyright and license headers of the source files.
+
+2. Condition: the Built-in Credits stay intact
+
+2.1 In every use, modification, and redistribution of the Work, with or without
+changes, You must keep the Built-in Credits intact, naming the Author as the
+original author.
+
+2.2 If You modify the Work, You may add Your own name as an author of Your
+changes, and You may rename the Derivative Work. You must still keep the Author
+named as original author and add to the credits shown by Your version the line
+"Based on Skylease by joshlucem". You must also state that Your version is
+modified and is not the original Skylease.
+
+2.3 You shall not remove, hide, shrink, alter, disable, misattribute, or
+obfuscate any Built-in Credit, nor change defaults or configuration so as to
+conceal one. You may restrict through permissions who can run the about
+command, but You may not remove it. You shall not present the Work, or any part
+of it written by the Author, as Your own work or as the work of a team that
+excludes the Author.
+
+3. Request: public credit
+
+3.1 The Author asks, but does not require, that any Public Distribution of the
+Work or of a Derivative Work show the Credit Line on its description page,
+listing, or README. Not doing so is not a breach of this Addendum or of the
+Apache License.
+
+4. Authorship
+
+4.1 Contributions to the Work are governed by Section 5 of the Apache License.
+Each contributor keeps the copyright in their own contribution. The Author may
+list contributors collectively in the NOTICE file.
+
+4.2 Nothing in this Addendum or in the Apache License waives any moral right,
+including the right to be recognized as author, that the law protects and that
+cannot be waived.
+
+5. Termination and cure
+
+5.1 A breach of Section 2 terminates Your rights under the Apache License and
+under this Addendum with respect to the Work.
+
+5.2 Your rights are reinstated: (a) provisionally, if You cure the breach within
+30 days after receiving notice of it; and (b) permanently, if the Author does
+not notify You of the breach within 60 days after You cured it. Notice may be
+given by any reasonable means, including a public issue or a report to the
+platform where the Work is distributed.
+
+5.3 If You do not cure within that period, termination is permanent and You must
+stop all Public Distribution. A second breach after a cure terminates Your
+rights without a new cure period.
+
+5.4 Termination does not affect third parties who received copies from You and
+who comply with these terms.
+
+6. Names
+
+6.1 Neither the name "Skylease", the Author's name or handle, nor any logo of the
+Work is licensed, except to display the Credit Line and to describe the origin
+of the Work truthfully.
+
+7. General
+
+7.1 Sections 7 (Disclaimer of Warranty) and 8 (Limitation of Liability) of the
+Apache License also apply to this Addendum.
+
+7.2 If a provision of this Addendum is unenforceable in a jurisdiction, it shall
+be applied to the closest enforceable extent, and the remaining provisions stay
+in force.

@@ -1,0 +1,389 @@
+# Skylease - Copyright 2026 joshlucem
+# SPDX-License-Identifier: Apache-2.0 AND LicenseRef-Skylease-Credits
+#
+# English (British). MiniMessage format: https://docs.advntr.dev/minimessage/format.html
+# Tags such as <time> or <player> are filled in automatically. An empty message ("") is not sent.
+# /skylease about and the console banner are not here; they are fixed credits.
+# Anything missing from this file falls back to the bundled English text.
+
+# Do not change. Used to add new messages when you update.
+config-version: 1
+
+prefix: "<dark_gray>[<aqua>Skylease</aqua>]</dark_gray>"
+error-prefix: "<dark_gray>[<red>Skylease</red>]</dark_gray>"
+success-prefix: "<dark_gray>[<green>Skylease</green>]</dark_gray>"
+warning-prefix: "<dark_gray>[<yellow>Skylease</yellow>]</dark_gray>"
+
+general:
+  no-permission: "<error-prefix> <red>You do not have permission to do that."
+  players-only: "Only players can use this command."
+  database-error: "<error-prefix> <red>Your data could not be read. Please tell an administrator."
+  player-never-joined: "<error-prefix> <red>There is no record of <yellow><player></yellow> on this server."
+  time-help: "<prefix> <gray>Valid formats: <yellow>30s, 5m, 2h, 1d, 1mo, 1y</yellow>, or combined, such as <yellow>1h30m</yellow>."
+  config-reloaded: "<success-prefix> <green>Configuration reloaded."
+  reload-failed: "<error-prefix> <red>The configuration could not be reloaded. Check the console."
+  world-not-allowed: "<error-prefix> <red>You cannot fly in this world. Your flight has been switched off."
+
+# Shown instead of the time when the player has unlimited flight.
+time:
+  unlimited: "∞"
+
+fly:
+  enabled: "<success-prefix> <green>Flight enabled. You have <yellow><time></yellow> left."
+  disabled: "<warning-prefix> <yellow>Flight disabled."
+  creative: "<warning-prefix> <yellow>You can already fly in this game mode."
+  unlimited: "<success-prefix> <green>Flight enabled. Your time is unlimited."
+  no-time: "<error-prefix> <red>You have no flight time left."
+  no-time-shop: "<prefix> <click:run_command:'/fly shop'><hover:show_text:'See how to get more time'><gold>Click to see how to get more.</gold></hover></click>"
+  time-depleted: "<error-prefix> <red>Your flight time has run out."
+  invalid-args: "<error-prefix> <red>Usage: <yellow>/fly [settings|shop]</yellow>"
+  world-blocked: "<error-prefix> <red>You cannot fly in this world."
+  region-blocked: "<error-prefix> <red>You cannot fly in this area."
+  region-entered: "<warning-prefix> <yellow>Flight is not allowed in this area. You will glide gently down."
+  cooldown-active: "<error-prefix> <red>Wait <yellow><seconds>s</yellow> before enabling flight again."
+  soft-landing-start: "<warning-prefix> <gold>Your time has run out. <yellow>You will glide gently to the ground."
+  soft-landing-complete: "<success-prefix> <green>You have landed."
+
+# Shown by /fly shop. Replace it with your own store details.
+shop:
+  lines:
+    - "<prefix> <gray>To get more flight time, ask the server team."
+    - "<gray>An administrator can add it to your account with <yellow>/flyadmin add</yellow>."
+
+alerts:
+  low-time: "<warning-prefix> <gold>You have <yellow><time></yellow> of flight left."
+  very-low-time: "<error-prefix> <red>Only <yellow><time></yellow> of flight left."
+
+admin:
+  usage:
+    - "<prefix> <aqua>Administration commands</aqua>"
+    - '<yellow>/flyadmin add \<player> \<time></yellow> <gray>- adds time'
+    - '<yellow>/flyadmin remove \<player> [time]</yellow> <gray>- takes time away; with no amount, removes it all'
+    - '<yellow>/flyadmin info \<player></yellow> <gray>- shows their data'
+    - "<yellow>/flyadmin reload</yellow> <gray>- reloads the configuration"
+    - "<yellow>/flyadmin debug on|off</yellow> <gray>- switches debug mode on or off"
+  usage-add: '<error-prefix> <red>Usage: <yellow>/flyadmin add \<player> \<time></yellow>'
+  usage-remove: '<error-prefix> <red>Usage: <yellow>/flyadmin remove \<player> [time]</yellow>'
+  usage-info: '<error-prefix> <red>Usage: <yellow>/flyadmin info \<player></yellow>'
+  invalid-arg: "<error-prefix> <red>Unknown subcommand: <yellow><arg></yellow>"
+  invalid-time: "<error-prefix> <red>Invalid time: <yellow><time></yellow>"
+  cannot-remove-unlimited: "<error-prefix> <red><aqua><player></aqua> has unlimited flight, so time cannot be taken away."
+  player-offline-note: "<warning-prefix> <yellow><player></yellow> is offline. The change has been saved."
+
+  time-added: "<success-prefix> <green>Added <yellow><time></yellow> to <aqua><player></aqua>."
+  time-added-notify: "<success-prefix> <green>You received <yellow><time></yellow> of flight time."
+  time-added-notify-admin: "<prefix> <aqua><admin></aqua> <gray>gave you <yellow><time></yellow> of flight time."
+  time-removed: "<success-prefix> <yellow>Took <red><time></red> from <aqua><player></aqua>."
+  time-removed-notify: "<prefix> <gray><red><time></red> of flight time was taken from you."
+  time-removed-notify-admin: "<prefix> <aqua><admin></aqua> <gray>took <red><time></red> of flight time from you."
+  all-time-removed: "<success-prefix> <yellow>Removed all flight time from <aqua><player></aqua>."
+  all-time-removed-notify: "<error-prefix> <red>All your flight time was removed."
+  all-time-removed-notify-admin: "<error-prefix> <aqua><admin></aqua> <red>removed all your flight time."
+
+  status-flying: "<green>Flying"
+  status-grounded: "<gray>On the ground"
+  player-info:
+    - "<prefix> <aqua>Data for <bold><player></bold></aqua>"
+    - "<gray>Time left: <yellow><time>"
+    - "<gray>Status: <status>"
+    - "<gray>Particle effect: <light_purple><effect>"
+    - "<gray>Alerts enabled: <yellow><alerts>/<max_alerts>"
+    - "<gray>UUID: <dark_gray><uuid>"
+    - "<gray>Last seen: <yellow><last_seen>"
+
+debug:
+  enabled: "<success-prefix> <green>Debug mode enabled. Details go to the console."
+  disabled: "<success-prefix> <green>Debug mode disabled."
+  invalid-arg: "<error-prefix> <red>Usage: <yellow>/flyadmin debug on|off</yellow>"
+
+menu:
+  alert-enabled: "<prefix> <gray>Alert at <yellow><threshold></yellow> <green>enabled</green>."
+  alert-disabled: "<prefix> <gray>Alert at <yellow><threshold></yellow> <red>disabled</red>."
+
+effects:
+  selected: "<success-prefix> <green>Effect <light_purple><effect></light_purple> selected."
+  disabled: "<success-prefix> <green>Effect removed. You will fly without particles."
+  no-permission: "<error-prefix> <red>You do not have permission to use that effect."
+
+# Sent on join to anyone with skylease.admin.updates when a newer version exists.
+update:
+  available:
+    - "<prefix> <gold>A new version of Skylease is available: <green><latest></green> <gray>(you have <red><current></red>)."
+    - "<click:open_url:'<url>'><hover:show_text:'Open the download page'><aqua><u>Click to download it</u></aqua></hover></click>"
+
+# Menu text. Layout (slots, materials) is in menus.yml.
+menus:
+  settings:
+    title: "<!i><black><bold>Flight settings</bold></black>"
+    player-head:
+      name: "<!i><aqua><bold><player></bold></aqua>"
+      lore:
+        - ""
+        - "<gray>Time left: <yellow><time>"
+        - "<gray>Current effect: <effect>"
+    alerts-button:
+      name: "<!i><gold><bold>Time alerts</bold></gold>"
+      lore:
+        - ""
+        - "<gray>Choose when you want to be told"
+        - "<gray>that your time is running low."
+        - ""
+        - "<gold>Click to configure"
+    effects-button:
+      name: "<!i><color:#ff00ff><bold>Flight effects</bold></color>"
+      lore:
+        - ""
+        - "<gray>Pick the particles that follow you"
+        - "<gray>while you fly."
+        - ""
+        - "<gold>Click to browse the effects"
+  alerts:
+    title: "<!i><gold><bold>Time alerts</bold></gold>"
+    # One entry shared by every threshold. <time> is the threshold, for example 5m.
+    alert:
+      name: "<!i><yellow>Alert: <time></yellow>"
+      lore:
+        - ""
+        - "<gray>You will be told when"
+        - "<yellow><time></yellow> <gray>of flight remain."
+        - ""
+        - "<gray>Status: <status>"
+        - ""
+        - "<gold>Click to <action>"
+      enabled-status: "<green>Enabled"
+      disabled-status: "<red>Disabled"
+      enabled-action: "disable"
+      disabled-action: "enable"
+    back-button:
+      name: "<!i><yellow><bold>Back</bold></yellow>"
+      lore:
+        - ""
+        - "<gray>Return to the settings."
+  effects:
+    title: "<!i><gold><bold>Flight effects</bold></gold>"
+    none: "<gray>None"
+    current-effect:
+      name: "<!i><aqua><bold>Current effect</bold></aqua>"
+      lore:
+        - ""
+        - "<gray>You are using:"
+        - "<current_effect>"
+    previous-page:
+      name: "<!i><yellow><bold>Previous page</bold></yellow>"
+      lore:
+        - ""
+        - "<dark_gray>Page <current_page> of <total_pages>"
+    no-previous-page:
+      name: "<!i><dark_gray>First page"
+      lore:
+        - ""
+        - "<dark_gray>Page <current_page> of <total_pages>"
+    next-page:
+      name: "<!i><yellow><bold>Next page</bold></yellow>"
+      lore:
+        - ""
+        - "<dark_gray>Page <current_page> of <total_pages>"
+    no-next-page:
+      name: "<!i><dark_gray>Last page"
+      lore:
+        - ""
+        - "<dark_gray>Page <current_page> of <total_pages>"
+    reset-effect:
+      name: "<!i><color:#ff7f00><bold>Remove effect</bold></color>"
+      lore:
+        - ""
+        - "<gray>You will fly without particles."
+        - ""
+        - "<gold>Click to remove it"
+    back-button:
+      name: "<!i><yellow><bold>Back</bold></yellow>"
+      lore:
+        - ""
+        - "<gray>Return to the settings."
+    locked-lore:
+      - ""
+      - "<red>You do not have permission"
+      - "<red>for this effect."
+    selected-lore:
+      - ""
+      - "<green>Selected effect"
+    available-lore:
+      - ""
+      - "<gold>Click to select"
+
+# Effect names and descriptions, by the keys used in effects.yml.
+effects-text:
+  hearts:
+    name: "<red>Hearts"
+    lore:
+      - "<gray>Leaves a trail of"
+      - "<red>hearts <gray>as you fly"
+  magic:
+    name: "<light_purple>Magic"
+    lore:
+      - "<gray>Enchantment symbols"
+      - "<light_purple>float around you"
+  fire:
+    name: "<gold>Fire"
+    lore:
+      - "<gray>Leaves a trail of"
+      - "<gold>flames <gray>as you fly"
+  water:
+    name: "<aqua>Water"
+    lore:
+      - "<gray>Drops of <aqua>water"
+      - "<gray>follow you through the air"
+  redstone:
+    name: "<dark_red>Redstone"
+    lore:
+      - "<dark_red>Redstone <gray>dust"
+      - "<gray>marks your path"
+  notes:
+    name: "<yellow>Musical notes"
+    lore:
+      - "<gray>Coloured <yellow>notes"
+      - "<gray>rise as you pass"
+  snow:
+    name: "<white>Snow"
+    lore:
+      - "<white>Snowflakes"
+      - "<gray>fall as you pass"
+  cloud:
+    name: "<gray>Clouds"
+    lore:
+      - "<gray>Little clouds"
+      - "<gray>surround you as you fly"
+  soul:
+    name: "<dark_aqua>Souls"
+    lore:
+      - "<dark_aqua>Blue flames"
+      - "<gray>of wandering souls"
+  cherry:
+    name: "<light_purple>Cherry petals"
+    lore:
+      - "<light_purple>Pink petals"
+      - "<gray>fall around you"
+  dragon:
+    name: "<color:#8b008b>Dragon"
+    lore:
+      - "<color:#8b008b>Dragon's breath"
+      - "<gray>swirls around you"
+  end_rod:
+    name: "<white>End rod"
+    lore:
+      - "<white>White sparkles"
+      - "<gray>from the rods of the End"
+  glow:
+    name: "<yellow>Glow"
+    lore:
+      - "<yellow>Golden glimmers"
+      - "<gray>follow you as you fly"
+  nectar:
+    name: "<gold>Nectar"
+    lore:
+      - "<gray>Sweet drops"
+      - "<gold>of nectar"
+  portal:
+    name: "<color:#9400d3>Portal"
+    lore:
+      - "<color:#9400d3>Portal <gray>particles"
+      - "<gray>from the Nether"
+  slime:
+    name: "<green>Slime"
+    lore:
+      - "<green>Green drops"
+      - "<gray>of slime"
+  totem:
+    name: "<yellow>Totem"
+    lore:
+      - "<yellow>Golden sparks"
+      - "<gray>from a totem"
+  wax:
+    name: "<gold>Wax"
+    lore:
+      - "<gray>Glints of"
+      - "<gold>orange <gray>wax"
+  spark:
+    name: "<yellow>Sparks"
+    lore:
+      - "<gray>Electric sparks"
+      - "<gray>around you"
+  cosy_smoke:
+    name: "<gray>Soft smoke"
+    lore:
+      - "<gray>A thin wisp of smoke"
+      - "<gray>as you fly"
+  signal_smoke:
+    name: "<dark_gray>Heavy smoke"
+    lore:
+      - "<gray>A column of smoke"
+      - "<dark_gray>that stands out"
+  ashstorm:
+    name: "<gray>Ash"
+    lore:
+      - "<gray>Dark ash"
+      - "<gray>on the move"
+  white_ash:
+    name: "<white>White ash"
+    lore:
+      - "<gray>A cloud of"
+      - "<white>pale ash"
+  spore_blossom:
+    name: "<light_purple>Floral breeze"
+    lore:
+      - "<gray>A breeze of flowers"
+      - "<light_purple>wraps around you"
+  crimson_spore:
+    name: "<red>Crimson spores"
+    lore:
+      - "<gray>Spores from the Nether,"
+      - "<red>crimson"
+  warped_spore:
+    name: "<aqua>Warped spores"
+    lore:
+      - "<gray>Spores from the Nether,"
+      - "<aqua>warped"
+  squid_ink:
+    name: "<dark_blue>Ink"
+    lore:
+      - "<gray>A cloud of"
+      - "<dark_blue>dark ink"
+  glow_ink:
+    name: "<aqua>Glowing ink"
+    lore:
+      - "<gray>Luminous ink"
+      - "<aqua>from a glow squid"
+  obsidian_drip:
+    name: "<dark_purple>Liquid obsidian"
+    lore:
+      - "<gray>Dark drops of"
+      - "<dark_purple>obsidian"
+  obsidian_fall:
+    name: "<purple>Obsidian rain"
+    lore:
+      - "<gray>Falling tears"
+      - "<purple>of obsidian"
+  honey_drip:
+    name: "<gold>Honey drops"
+    lore:
+      - "<gray>Sweet drops"
+      - "<gold>of honey"
+  honey_fall:
+    name: "<yellow>Honey fall"
+    lore:
+      - "<gray>A golden flow"
+      - "<yellow>of honey"
+  reverse_portal:
+    name: "<color:#5f9ea0>Reverse portal"
+    lore:
+      - "<gray>Portal energy,"
+      - "<color:#5f9ea0>reversed"
+
+# Words used by the PlaceholderAPI placeholders.
+placeholders:
+  "yes": "yes"
+  "no": "no"
+  flying: "Flying"
+  grounded: "On the ground"
+  none: "None"
+  no-alerts: "None"

@@ -1,0 +1,108 @@
+# Skylease - Copyright 2026 joshlucem
+# SPDX-License-Identifier: Apache-2.0 AND LicenseRef-Skylease-Credits
+#
+# authors and website are plugin credits. The licence asks you to keep them.
+name: Skylease
+version: '${project.version}'
+main: com.joshlucem.skylease.Skylease
+api-version: '1.21'
+description: Per-player flight time for Paper servers.
+authors: [joshlucem]
+website: https://github.com/joshlucem/Skylease
+softdepend: [PlaceholderAPI, WorldGuard]
+
+# Paper downloads these from Maven Central on start-up. Same versions as the pom.
+libraries:
+  - org.xerial:sqlite-jdbc:3.44.1.0
+  - com.mysql:mysql-connector-j:8.2.0
+
+commands:
+  fly:
+    description: Switch your flight on or off, and open your settings.
+    usage: /fly [settings|shop]
+    aliases: [volar, flight]
+  flyadmin:
+    description: Manage players' flight time.
+    usage: /flyadmin <add|remove|info|reload|debug>
+    permission: skylease.admin.use
+  skylease:
+    description: Plugin credits.
+    usage: /skylease about
+    permission: skylease.about
+
+permissions:
+  skylease.*:
+    description: Every Skylease permission.
+    default: op
+    children:
+      skylease.user.*: true
+      skylease.admin.*: true
+      skylease.effects.*: true
+      skylease.unlimited: true
+      skylease.about: true
+
+  skylease.user.*:
+    description: Player permissions.
+    default: false
+    children:
+      skylease.user.fly: true
+      skylease.user.menu.settings: true
+      skylease.user.cooldown.bypass: true
+  skylease.user.fly:
+    description: Use /fly to switch flight on and off.
+    default: false
+  skylease.user.menu.settings:
+    description: Open the settings menu with /fly settings.
+    default: false
+  skylease.user.cooldown.bypass:
+    description: Skip the wait between flight activations.
+    default: false
+
+  skylease.admin.*:
+    description: Administration permissions.
+    default: op
+    children:
+      skylease.admin.use: true
+      skylease.admin.command.add: true
+      skylease.admin.command.remove: true
+      skylease.admin.command.info: true
+      skylease.admin.command.reload: true
+      skylease.admin.debug: true
+      skylease.admin.updates: true
+      skylease.admin.bypass-restrictions: true
+  skylease.admin.use:
+    description: Use /flyadmin.
+    default: op
+  skylease.admin.command.add:
+    description: Use /flyadmin add.
+    default: op
+  skylease.admin.command.remove:
+    description: Use /flyadmin remove.
+    default: op
+  skylease.admin.command.info:
+    description: Use /flyadmin info.
+    default: op
+  skylease.admin.command.reload:
+    description: Use /flyadmin reload.
+    default: op
+  skylease.admin.debug:
+    description: Use /flyadmin debug.
+    default: op
+  skylease.admin.updates:
+    description: Be told about new versions on joining.
+    default: op
+  skylease.admin.bypass-restrictions:
+    description: Fly in blocked worlds and regions.
+    default: op
+
+  # skylease.effects.<id> are registered when effects.yml loads.
+  skylease.effects.*:
+    description: Use every particle effect.
+    default: false
+
+  skylease.unlimited:
+    description: Fly without using up time.
+    default: op
+  skylease.about:
+    description: See the credits with /skylease about.
+    default: op

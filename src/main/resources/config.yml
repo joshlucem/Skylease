@@ -1,0 +1,92 @@
+# Skylease - Copyright 2026 joshlucem
+# SPDX-License-Identifier: Apache-2.0 AND LicenseRef-Skylease-Credits
+#
+# Reload with /flyadmin reload. Layout of the menus is in menus.yml and the effects in effects.yml.
+# All text is in the lang folder.
+
+# Do not change. Used to add new options when you update.
+config-version: 1
+
+language:
+  # Name of a file in plugins/Skylease/lang, without .yml. Bundled: en (British English) and es (Spanish).
+  # To add your own, copy en.yml to lang/<name>.yml, translate it and put <name> here.
+  # Anything missing from your file falls back to the bundled English.
+  selected: en
+
+database:
+  # sqlite: local file in plugins/Skylease/data. mysql or mariadb: share data between servers.
+  type: sqlite
+  mysql:
+    host: localhost
+    port: 3306
+    database: skylease
+    username: root
+    password: ""
+    use-ssl: false
+  # Seconds between writes of pending changes. Data is also saved when a player leaves and on shutdown.
+  # If the server crashes, at most this much is lost.
+  save-interval-seconds: 30
+  # Deletes players who have not joined for a long time.
+  auto-purge:
+    enabled: true
+    days-inactive: 180
+    # Keeps inactive players who still have flight time, so nobody loses time they were given.
+    keep-players-with-time: true
+    on-startup: true
+    interval-hours: 24
+
+flight:
+  # Every consume-interval-ticks (20 = 1 second), consume-amount-seconds is taken off.
+  consume-interval-ticks: 20
+  consume-amount-seconds: 1
+  # Seconds between one activation and the next. 0 = no wait.
+  fly-toggle-cooldown-seconds: 2
+  # Ends flight when time runs out. If false, players keep flying at 0.
+  auto-disable-on-depleted: true
+
+  # When time runs out in mid-air, the player glides down instead of falling.
+  soft-landing:
+    enabled: true
+    duration-ticks: 100
+    use-slow-falling: true
+    use-elytra-glide: false
+    # Only used when use-slow-falling and use-elytra-glide are both false.
+    fall-speed: 0.3
+
+  # An empty allowed-worlds means any world not in blocked-worlds.
+  # The permission skylease.admin.bypass-restrictions ignores all of this.
+  allowed-worlds: []
+  blocked-worlds: []
+
+  # With WorldGuard installed, deny flight in a region with: /rg flag <region> skylease-fly deny
+  # It also stops anyone already flying when they enter it. Set this to false to ignore the flag.
+  worldguard-integration: true
+
+alerts:
+  # Thresholds in seconds. Each one needs its "alert-<seconds>" slot in menus.yml.
+  available-thresholds: [60, 300, 900, 1800]
+  # The ones switched on for new players.
+  default-enabled: [60, 300]
+  # A Bukkit Sound name, or NONE.
+  alert-sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  alert-sound-volume: 1.0
+  alert-sound-pitch: 1.0
+
+particles:
+  # How many ticks between particles, and how many appear each time.
+  spawn-interval: 5
+  particles-per-spawn: 3
+
+# For %skylease_fly-percentage% and %skylease_fly-bar%.
+placeholders:
+  max-fly-time-seconds: 86400
+  bar:
+    length: 10
+    filled: "■"
+    empty: "□"
+
+update-checker:
+  # One GET to the GitHub API on start-up. No server or player data is sent.
+  enabled: true
+  # Tells anyone with skylease.admin.updates when they join.
+  notify-on-join: true

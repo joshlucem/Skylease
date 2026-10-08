@@ -1,0 +1,389 @@
+# Skylease - Copyright 2026 joshlucem
+# SPDX-License-Identifier: Apache-2.0 AND LicenseRef-Skylease-Credits
+#
+# Español. Formato MiniMessage: https://docs.advntr.dev/minimessage/format.html
+# Etiquetas como <time> o <player> se rellenan solas. Un mensaje vacío ("") no se envía.
+# /skylease about y el banner de consola no están aquí; son créditos fijos.
+# Lo que falte en este archivo se toma del inglés incluido en el plugin.
+
+# No tocar. Sirve para agregar mensajes nuevos al actualizar.
+config-version: 1
+
+prefix: "<dark_gray>[<aqua>Skylease</aqua>]</dark_gray>"
+error-prefix: "<dark_gray>[<red>Skylease</red>]</dark_gray>"
+success-prefix: "<dark_gray>[<green>Skylease</green>]</dark_gray>"
+warning-prefix: "<dark_gray>[<yellow>Skylease</yellow>]</dark_gray>"
+
+general:
+  no-permission: "<error-prefix> <red>No tienes permiso para hacer eso."
+  players-only: "Este comando solo pueden usarlo los jugadores."
+  database-error: "<error-prefix> <red>No se pudieron leer tus datos. Avisa a un administrador."
+  player-never-joined: "<error-prefix> <red>No hay registro de <yellow><player></yellow> en este servidor."
+  time-help: "<prefix> <gray>Formatos válidos: <yellow>30s, 5m, 2h, 1d, 1mo, 1y</yellow> o combinados, como <yellow>1h30m</yellow>."
+  config-reloaded: "<success-prefix> <green>Configuración recargada."
+  reload-failed: "<error-prefix> <red>No se pudo recargar la configuración. Revisa la consola."
+  world-not-allowed: "<error-prefix> <red>En este mundo no se puede volar. Tu vuelo se desactivó."
+
+# Se muestra en lugar del tiempo cuando el jugador tiene vuelo ilimitado.
+time:
+  unlimited: "∞"
+
+fly:
+  enabled: "<success-prefix> <green>Vuelo activado. Te quedan <yellow><time></yellow>."
+  disabled: "<warning-prefix> <yellow>Vuelo desactivado."
+  creative: "<warning-prefix> <yellow>En este modo de juego ya puedes volar."
+  unlimited: "<success-prefix> <green>Vuelo activado. Tu tiempo es ilimitado."
+  no-time: "<error-prefix> <red>No te queda tiempo de vuelo."
+  no-time-shop: "<prefix> <click:run_command:'/fly shop'><hover:show_text:'Ver cómo conseguir tiempo'><gold>Haz clic para ver cómo conseguir más.</gold></hover></click>"
+  time-depleted: "<error-prefix> <red>Se acabó tu tiempo de vuelo."
+  invalid-args: "<error-prefix> <red>Uso: <yellow>/fly [settings|shop]</yellow>"
+  world-blocked: "<error-prefix> <red>No se puede volar en este mundo."
+  region-blocked: "<error-prefix> <red>No se puede volar en esta zona."
+  region-entered: "<warning-prefix> <yellow>En esta zona no se puede volar. Descenderás despacio."
+  cooldown-active: "<error-prefix> <red>Espera <yellow><seconds>s</yellow> para activar el vuelo otra vez."
+  soft-landing-start: "<warning-prefix> <gold>Se acabó el tiempo. <yellow>Descenderás despacio hasta el suelo."
+  soft-landing-complete: "<success-prefix> <green>Has aterrizado."
+
+# Lo que muestra /fly shop. Cámbialo por los datos de tu tienda.
+shop:
+  lines:
+    - "<prefix> <gray>Para conseguir más tiempo de vuelo, consulta al equipo del servidor."
+    - "<gray>Un administrador puede sumarlo a tu cuenta con <yellow>/flyadmin add</yellow>."
+
+alerts:
+  low-time: "<warning-prefix> <gold>Te quedan <yellow><time></yellow> de vuelo."
+  very-low-time: "<error-prefix> <red>Solo te quedan <yellow><time></yellow> de vuelo."
+
+admin:
+  usage:
+    - "<prefix> <aqua>Comandos de administración</aqua>"
+    - '<yellow>/flyadmin add \<jugador> \<tiempo></yellow> <gray>- suma tiempo'
+    - '<yellow>/flyadmin remove \<jugador> [tiempo]</yellow> <gray>- resta tiempo; sin cantidad, quita todo'
+    - '<yellow>/flyadmin info \<jugador></yellow> <gray>- muestra sus datos'
+    - "<yellow>/flyadmin reload</yellow> <gray>- recarga la configuración"
+    - "<yellow>/flyadmin debug on|off</yellow> <gray>- activa o desactiva el modo depuración"
+  usage-add: '<error-prefix> <red>Uso: <yellow>/flyadmin add \<jugador> \<tiempo></yellow>'
+  usage-remove: '<error-prefix> <red>Uso: <yellow>/flyadmin remove \<jugador> [tiempo]</yellow>'
+  usage-info: '<error-prefix> <red>Uso: <yellow>/flyadmin info \<jugador></yellow>'
+  invalid-arg: "<error-prefix> <red>Subcomando desconocido: <yellow><arg></yellow>"
+  invalid-time: "<error-prefix> <red>Tiempo no válido: <yellow><time></yellow>"
+  cannot-remove-unlimited: "<error-prefix> <red><aqua><player></aqua> tiene vuelo ilimitado y no se le puede restar tiempo."
+  player-offline-note: "<warning-prefix> <yellow><player></yellow> no está conectado. El cambio quedó guardado."
+
+  time-added: "<success-prefix> <green>Se sumaron <yellow><time></yellow> a <aqua><player></aqua>."
+  time-added-notify: "<success-prefix> <green>Recibiste <yellow><time></yellow> de tiempo de vuelo."
+  time-added-notify-admin: "<prefix> <aqua><admin></aqua> <gray>te sumó <yellow><time></yellow> de tiempo de vuelo."
+  time-removed: "<success-prefix> <yellow>Se restaron <red><time></red> a <aqua><player></aqua>."
+  time-removed-notify: "<prefix> <gray>Se te restaron <red><time></red> de tiempo de vuelo."
+  time-removed-notify-admin: "<prefix> <aqua><admin></aqua> <gray>te restó <red><time></red> de tiempo de vuelo."
+  all-time-removed: "<success-prefix> <yellow>Se quitó todo el tiempo de vuelo a <aqua><player></aqua>."
+  all-time-removed-notify: "<error-prefix> <red>Se te quitó todo el tiempo de vuelo."
+  all-time-removed-notify-admin: "<error-prefix> <aqua><admin></aqua> <red>te quitó todo el tiempo de vuelo."
+
+  status-flying: "<green>Volando"
+  status-grounded: "<gray>En tierra"
+  player-info:
+    - "<prefix> <aqua>Datos de <bold><player></bold></aqua>"
+    - "<gray>Tiempo restante: <yellow><time>"
+    - "<gray>Estado: <status>"
+    - "<gray>Efecto de partículas: <light_purple><effect>"
+    - "<gray>Avisos activados: <yellow><alerts>/<max_alerts>"
+    - "<gray>UUID: <dark_gray><uuid>"
+    - "<gray>Última conexión: <yellow><last_seen>"
+
+debug:
+  enabled: "<success-prefix> <green>Modo depuración activado. Los detalles salen por consola."
+  disabled: "<success-prefix> <green>Modo depuración desactivado."
+  invalid-arg: "<error-prefix> <red>Uso: <yellow>/flyadmin debug on|off</yellow>"
+
+menu:
+  alert-enabled: "<prefix> <gray>Aviso de <yellow><threshold></yellow> <green>activado</green>."
+  alert-disabled: "<prefix> <gray>Aviso de <yellow><threshold></yellow> <red>desactivado</red>."
+
+effects:
+  selected: "<success-prefix> <green>Efecto <light_purple><effect></light_purple> seleccionado."
+  disabled: "<success-prefix> <green>Efecto quitado. Volarás sin partículas."
+  no-permission: "<error-prefix> <red>No tienes permiso para usar ese efecto."
+
+# Aviso de versión nueva para quien tenga skylease.admin.updates.
+update:
+  available:
+    - "<prefix> <gold>Hay una versión nueva de Skylease: <green><latest></green> <gray>(tienes <red><current></red>)."
+    - "<click:open_url:'<url>'><hover:show_text:'Abrir la página de descarga'><aqua><u>Haz clic para descargarla</u></aqua></hover></click>"
+
+# Textos de los menús. El diseño (ranuras, materiales) está en menus.yml.
+menus:
+  settings:
+    title: "<!i><black><bold>Ajustes de vuelo</bold></black>"
+    player-head:
+      name: "<!i><aqua><bold><player></bold></aqua>"
+      lore:
+        - ""
+        - "<gray>Tiempo restante: <yellow><time>"
+        - "<gray>Efecto actual: <effect>"
+    alerts-button:
+      name: "<!i><gold><bold>Avisos de tiempo</bold></gold>"
+      lore:
+        - ""
+        - "<gray>Elige cuándo quieres que te avisemos"
+        - "<gray>de que te queda poco tiempo."
+        - ""
+        - "<gold>Clic para configurar"
+    effects-button:
+      name: "<!i><color:#ff00ff><bold>Efectos de vuelo</bold></color>"
+      lore:
+        - ""
+        - "<gray>Elige las partículas que te siguen"
+        - "<gray>mientras vuelas."
+        - ""
+        - "<gold>Clic para ver los efectos"
+  alerts:
+    title: "<!i><gold><bold>Avisos de tiempo</bold></gold>"
+    # Una sola entrada para todos los umbrales. <time> es el umbral, por ejemplo 5m.
+    alert:
+      name: "<!i><yellow>Aviso: <time></yellow>"
+      lore:
+        - ""
+        - "<gray>Te avisamos cuando te queden"
+        - "<yellow><time></yellow> <gray>de vuelo."
+        - ""
+        - "<gray>Estado: <status>"
+        - ""
+        - "<gold>Clic para <action>"
+      enabled-status: "<green>Activado"
+      disabled-status: "<red>Desactivado"
+      enabled-action: "desactivar"
+      disabled-action: "activar"
+    back-button:
+      name: "<!i><yellow><bold>Volver</bold></yellow>"
+      lore:
+        - ""
+        - "<gray>Regresa a los ajustes."
+  effects:
+    title: "<!i><gold><bold>Efectos de vuelo</bold></gold>"
+    none: "<gray>Ninguno"
+    current-effect:
+      name: "<!i><aqua><bold>Efecto actual</bold></aqua>"
+      lore:
+        - ""
+        - "<gray>Estás usando:"
+        - "<current_effect>"
+    previous-page:
+      name: "<!i><yellow><bold>Página anterior</bold></yellow>"
+      lore:
+        - ""
+        - "<dark_gray>Página <current_page> de <total_pages>"
+    no-previous-page:
+      name: "<!i><dark_gray>Primera página"
+      lore:
+        - ""
+        - "<dark_gray>Página <current_page> de <total_pages>"
+    next-page:
+      name: "<!i><yellow><bold>Página siguiente</bold></yellow>"
+      lore:
+        - ""
+        - "<dark_gray>Página <current_page> de <total_pages>"
+    no-next-page:
+      name: "<!i><dark_gray>Última página"
+      lore:
+        - ""
+        - "<dark_gray>Página <current_page> de <total_pages>"
+    reset-effect:
+      name: "<!i><color:#ff7f00><bold>Quitar efecto</bold></color>"
+      lore:
+        - ""
+        - "<gray>Vuelas sin partículas."
+        - ""
+        - "<gold>Clic para quitarlo"
+    back-button:
+      name: "<!i><yellow><bold>Volver</bold></yellow>"
+      lore:
+        - ""
+        - "<gray>Regresa a los ajustes."
+    locked-lore:
+      - ""
+      - "<red>No tienes permiso"
+      - "<red>para este efecto."
+    selected-lore:
+      - ""
+      - "<green>Efecto seleccionado"
+    available-lore:
+      - ""
+      - "<gold>Clic para seleccionar"
+
+# Nombres y descripciones de los efectos, por las claves de effects.yml.
+effects-text:
+  hearts:
+    name: "<red>Corazones"
+    lore:
+      - "<gray>Deja un rastro de"
+      - "<red>corazones <gray>al volar"
+  magic:
+    name: "<light_purple>Magia"
+    lore:
+      - "<gray>Símbolos de encantamiento"
+      - "<light_purple>flotan a tu alrededor"
+  fire:
+    name: "<gold>Fuego"
+    lore:
+      - "<gray>Deja un rastro de"
+      - "<gold>llamas <gray>al volar"
+  water:
+    name: "<aqua>Agua"
+    lore:
+      - "<gray>Gotas de <aqua>agua"
+      - "<gray>te siguen en el aire"
+  redstone:
+    name: "<dark_red>Redstone"
+    lore:
+      - "<gray>Polvo de <dark_red>redstone"
+      - "<gray>marca tu camino"
+  notes:
+    name: "<yellow>Notas musicales"
+    lore:
+      - "<gray>Notas <yellow>de colores"
+      - "<gray>suben a tu paso"
+  snow:
+    name: "<white>Nieve"
+    lore:
+      - "<gray>Copos de <white>nieve"
+      - "<gray>caen a tu paso"
+  cloud:
+    name: "<gray>Nubes"
+    lore:
+      - "<gray>Pequeñas nubes"
+      - "<gray>te rodean al volar"
+  soul:
+    name: "<dark_aqua>Almas"
+    lore:
+      - "<gray>Llamas <dark_aqua>azuladas"
+      - "<gray>de almas errantes"
+  cherry:
+    name: "<light_purple>Pétalos de cerezo"
+    lore:
+      - "<gray>Pétalos <light_purple>rosados"
+      - "<gray>caen a tu alrededor"
+  dragon:
+    name: "<color:#8b008b>Dragón"
+    lore:
+      - "<gray>Aliento de <color:#8b008b>dragón"
+      - "<gray>a tu alrededor"
+  end_rod:
+    name: "<white>Vara del End"
+    lore:
+      - "<gray>Destellos <white>blancos"
+      - "<gray>de las varas del End"
+  glow:
+    name: "<yellow>Brillo"
+    lore:
+      - "<gray>Destellos <yellow>dorados"
+      - "<gray>te siguen al volar"
+  nectar:
+    name: "<gold>Néctar"
+    lore:
+      - "<gray>Gotas dulces"
+      - "<gray>de <gold>néctar"
+  portal:
+    name: "<color:#9400d3>Portal"
+    lore:
+      - "<gray>Partículas de <color:#9400d3>portal"
+      - "<gray>del Nether"
+  slime:
+    name: "<green>Slime"
+    lore:
+      - "<gray>Gotas <green>verdes"
+      - "<gray>de slime"
+  totem:
+    name: "<yellow>Tótem"
+    lore:
+      - "<gray>Chispas <yellow>doradas"
+      - "<gray>de un tótem"
+  wax:
+    name: "<gold>Cera"
+    lore:
+      - "<gray>Destellos de"
+      - "<gold>cera <gray>naranja"
+  spark:
+    name: "<yellow>Chispas"
+    lore:
+      - "<gray>Chispas eléctricas"
+      - "<gray>a tu alrededor"
+  cosy_smoke:
+    name: "<gray>Humo suave"
+    lore:
+      - "<gray>Un hilo de humo"
+      - "<gray>ligero al volar"
+  signal_smoke:
+    name: "<dark_gray>Humo intenso"
+    lore:
+      - "<gray>Una columna de humo"
+      - "<dark_gray>más marcada"
+  ashstorm:
+    name: "<gray>Ceniza"
+    lore:
+      - "<gray>Ceniza oscura"
+      - "<gray>en movimiento"
+  white_ash:
+    name: "<white>Ceniza blanca"
+    lore:
+      - "<gray>Una nube de ceniza"
+      - "<white>blanquecina"
+  spore_blossom:
+    name: "<light_purple>Brisa floral"
+    lore:
+      - "<gray>Una brisa de flores"
+      - "<light_purple>te envuelve"
+  crimson_spore:
+    name: "<red>Esporas carmesí"
+    lore:
+      - "<gray>Esporas del Nether"
+      - "<red>carmesí"
+  warped_spore:
+    name: "<aqua>Esporas distorsionadas"
+    lore:
+      - "<gray>Esporas del Nether"
+      - "<aqua>distorsionado"
+  squid_ink:
+    name: "<dark_blue>Tinta"
+    lore:
+      - "<gray>Una nube de tinta"
+      - "<dark_blue>oscura"
+  glow_ink:
+    name: "<aqua>Tinta brillante"
+    lore:
+      - "<gray>Tinta luminosa"
+      - "<aqua>de calamar brillante"
+  obsidian_drip:
+    name: "<dark_purple>Obsidiana líquida"
+    lore:
+      - "<gray>Gotas oscuras"
+      - "<dark_purple>de obsidiana"
+  obsidian_fall:
+    name: "<purple>Lluvia de obsidiana"
+    lore:
+      - "<gray>Lágrimas que caen"
+      - "<purple>de obsidiana"
+  honey_drip:
+    name: "<gold>Gotas de miel"
+    lore:
+      - "<gray>Gotas dulces"
+      - "<gold>de miel"
+  honey_fall:
+    name: "<yellow>Cascada de miel"
+    lore:
+      - "<gray>Un flujo dorado"
+      - "<yellow>de miel"
+  reverse_portal:
+    name: "<color:#5f9ea0>Portal inverso"
+    lore:
+      - "<gray>Energía de portal"
+      - "<color:#5f9ea0>invertida"
+
+# Palabras que usan los placeholders de PlaceholderAPI.
+placeholders:
+  "yes": "sí"
+  "no": "no"
+  flying: "Volando"
+  grounded: "En tierra"
+  none: "Ninguno"
+  no-alerts: "Ninguna"

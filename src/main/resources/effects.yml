@@ -1,0 +1,144 @@
+# Skylease - Copyright 2026 joshlucem
+# SPDX-License-Identifier: Apache-2.0 AND LicenseRef-Skylease-Credits
+#
+# Particle effects for /fly settings. To add one, copy a block, change the key, add its name
+# and description under effects-text in each lang file, and reload.
+#   material    item shown in the menu
+#   permission  optional; defaults to skylease.effects.<key>
+#   particle    https://jd.papermc.io/paper/1.21/org/bukkit/Particle.html
+# skylease.effects.* gives access to all of them.
+
+# Do not change.
+config-version: 1
+
+hearts:
+  material: RED_DYE
+  particle: HEART
+
+magic:
+  material: PURPLE_DYE
+  particle: ENCHANT
+
+fire:
+  material: ORANGE_DYE
+  particle: FLAME
+
+water:
+  material: LIGHT_BLUE_DYE
+  particle: DRIPPING_WATER
+
+redstone:
+  material: REDSTONE
+  particle: DUST
+
+notes:
+  material: NOTE_BLOCK
+  particle: NOTE
+
+snow:
+  material: SNOWBALL
+  particle: SNOWFLAKE
+
+cloud:
+  material: WHITE_WOOL
+  particle: CLOUD
+
+soul:
+  material: SOUL_SAND
+  particle: SOUL
+
+cherry:
+  material: PINK_PETALS
+  particle: CHERRY_LEAVES
+
+dragon:
+  material: DRAGON_BREATH
+  particle: DRAGON_BREATH
+
+end_rod:
+  material: END_ROD
+  particle: END_ROD
+
+glow:
+  material: GLOW_INK_SAC
+  particle: GLOW
+
+nectar:
+  material: HONEY_BOTTLE
+  particle: FALLING_NECTAR
+
+portal:
+  material: OBSIDIAN
+  particle: PORTAL
+
+slime:
+  material: SLIME_BALL
+  particle: ITEM_SLIME
+
+totem:
+  material: TOTEM_OF_UNDYING
+  particle: TOTEM_OF_UNDYING
+
+wax:
+  material: HONEYCOMB
+  particle: WAX_ON
+
+spark:
+  material: LIGHTNING_ROD
+  particle: ELECTRIC_SPARK
+
+cosy_smoke:
+  material: CAMPFIRE
+  particle: CAMPFIRE_COSY_SMOKE
+
+signal_smoke:
+  material: SOUL_CAMPFIRE
+  particle: CAMPFIRE_SIGNAL_SMOKE
+
+ashstorm:
+  material: BASALT
+  particle: ASH
+
+white_ash:
+  material: CALCITE
+  particle: WHITE_ASH
+
+spore_blossom:
+  material: SPORE_BLOSSOM
+  particle: SPORE_BLOSSOM_AIR
+
+crimson_spore:
+  material: CRIMSON_FUNGUS
+  particle: CRIMSON_SPORE
+
+warped_spore:
+  material: WARPED_FUNGUS
+  particle: WARPED_SPORE
+
+squid_ink:
+  material: INK_SAC
+  particle: SQUID_INK
+
+glow_ink:
+  material: GLOW_INK_SAC
+  particle: GLOW_SQUID_INK
+
+obsidian_drip:
+  material: CRYING_OBSIDIAN
+  particle: DRIPPING_OBSIDIAN_TEAR
+
+obsidian_fall:
+  material: CRYING_OBSIDIAN
+  particle: FALLING_OBSIDIAN_TEAR
+
+honey_drip:
+  material: HONEY_BOTTLE
+  particle: DRIPPING_HONEY
+
+honey_fall:
+  material: HONEY_BLOCK
+  particle: FALLING_HONEY
+
+reverse_portal:
+  material: ENDER_PEARL
+  particle: REVERSE_PORTAL
